@@ -166,6 +166,7 @@ class App extends Component {
 
         <Chat
           show={expanded}
+          clearMessages={this.clearMessages}
           closeWebchat={this.toggleChat}
           preferences={preferences}
           containerMessagesStyle={containerMessagesStyle}
@@ -184,7 +185,7 @@ class App extends Component {
           defaultMessageDelay={defaultMessageDelay}
           conversationHistoryId={conversationHistoryId}
           readOnlyMode={readOnlyMode}
-
+          
         />
       </div>
     )

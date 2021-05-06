@@ -432,6 +432,7 @@ class Chat extends Component {
             closeWebchat={closeWebchat}
             preferences={preferences}
             key='header'
+            clearMessages={this.props.clearMessages}
             logoStyle={logoStyle}
             readOnlyMode={readOnlyMode}
           />
@@ -484,6 +485,7 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
+  clearMessages: PropTypes.func,
   postMessage: PropTypes.func,
   closeWebchat: PropTypes.func,
   pollMessages: PropTypes.func,
