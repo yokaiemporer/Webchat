@@ -4,13 +4,15 @@ import append from 'ramda/es/append'
 
 import SendButton from 'components/SendButton'
 import { safeArrayOfItem } from 'helpers'
+import Dictaphone from 'containers/Dictaphone'
 
 import Menu from 'components/Menu'
 import MenuSVG from 'components/svgs/menu'
 import './style.scss'
-
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 // Number of minimum char to display the char limit.
 const NUMBER_BEFORE_LIMIT = 5
+// const { transcript, resetTranscript } = useSpeechRecognition()
 
 class Input extends Component {
   state = {
@@ -24,6 +26,17 @@ class Input extends Component {
     menuIndexes: [],
   }
 
+  onVoiceChange = (ev,val) =>
+  {
+    this.setState(prevState => {
+        const newPreviousValues = [...prevState.previousValues]
+        newPreviousValues[prevState.indexHistory] = val
+        return {
+          value: val,
+          previousValues: newPreviousValues,
+        }
+      }, this.autoGrow)
+  }
   static getDerivedStateFromProps (props, state) {
     if (!props.isOpen) {
       return { isOpen: props.isOpen, hasFocus: false }
@@ -79,6 +92,7 @@ class Input extends Component {
 
     const { characterLimit } = this.props
     const { value } = e.target
+    console.log(value)
 
     if (characterLimit && value.length > characterLimit) {
       return
@@ -249,7 +263,7 @@ class Input extends Component {
           }}
           rows={1}
         />
-
+        <Dictaphone onVoiceChange={this.onVoiceChange} />
         <SendButton
           preferences={preferences}
           sendMessage={this.sendMessage}
