@@ -19,7 +19,7 @@ const Header = ({ closeWebchat, preferences, logoStyle, readOnlyMode ,clearMessa
       <img className='RecastAppHeader--logo CaiAppHeader--logo' src={preferences.headerLogo} style={logoStyle} />
 
       <div className='RecastAppHeader--title CaiAppHeader--title'>{preferences.headerTitle}</div>
-      <button onClick={clearMessages}>Refresh</button>
+      <button onClick={clearMessages}>Refresh2</button>
       {/* <img src='../../../assets/refresh-page-option.png' onClick={clearMessages} /> */}
       <div className='RecastAppHeader--btn CaiAppHeader--btn' onClick={closeWebchat}>
         <img src='https://cdn.cai.tools.sap/webchat/close.svg' />
